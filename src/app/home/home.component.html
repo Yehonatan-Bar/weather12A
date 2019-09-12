@@ -1,0 +1,78 @@
+<!-- <body background="C:\Users\User\Documents\earth-on-clear-background-made-of-clay-1024x1017.png"> -->
+<div class="PrimeBackGround">
+
+
+
+  <!-- <ul class="list-group my-list">
+        <li class="my-item list-group-item" *ngFor="let city of citiesFromSearch"
+         (click)="setLocationKeyAndName(city)">{{city.LocalizedName}}</li>
+      </ul> 
+       -->
+  <div id="cover">
+    <form method="get" action="">
+      <div class="tb">
+        <div class="td">
+          <input #searchCityName type="text" placeholder="Enter city name" required
+            (keyup)="searchForecasts(searchCityName.value)">
+          <ul class="list-group my-list">
+            <li class="my-item list-group-item" *ngFor="let city of citiesFromSearch"
+              (click)="getFiveDayForecasts(city)">
+              {{city.LocalizedName}}
+            </li>
+          </ul>
+        </div>
+        <div class="td" id="s-cover">
+          <button type="submit">
+            <div id="s-circle"></div>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  
+  
+  
+  
+  
+  
+    <div class="centerThemAll">
+      <button type="button" (click)="favoriteMe()" class="btn btn-primary">add to favorite</button>
+    </div>
+    <div class="centerThemAll">
+      <button type="button" (click)="isCelsiusMethod()" class="btn btn-primary">Celsius/Fahrenheit</button>
+    </div>
+  
+  
+    <div class=" cityName">
+        <h1>{{cityName}}</h1>
+      </div>
+    
+  <div class="centerThemAll">
+    <div  *ngIf="forcast">
+    <div  class="country-content" *ngFor="let f of forcast.DailyForecasts">
+      <h2>{{f.Day.IconPhrase}}</h2>
+      <div *ngIf="!isCelsius">
+        <h3>Minimum: {{f.Temperature.Minimum.Value}}°{{f.Temperature.Minimum.Unit}} </h3>
+        <h3>Maximum: {{f.Temperature.Maximum.Value}}°{{f.Temperature.Maximum.Unit}} </h3>
+      </div>
+      <div *ngIf="isCelsius">
+        <h3>Minimum: {{((f.Temperature.Minimum.Value-32)/1.8).toFixed(0)}}°C </h3>
+        <h3>Maximum: {{((f.Temperature.Maximum.Value-32)/1.8).toFixed(0)}}°C </h3>
+      </div>
+      
+      
+    </div>
+  </div>
+    <!-- //C=(F-32)/1.8 
+    DailyForecasts[""0""].Day.IconPhrase
+    -->
+
+
+    <div class="empty" *ngFor="let f of SomthingToFill">
+      <p>{{f}}</p>
+    </div>
+  </div>
+</div>
+<!-- https://yehonatanbar.s3.amazonaws.com/index.html -->
